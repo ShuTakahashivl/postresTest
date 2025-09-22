@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pastelería de Haruka</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.6;
+            color: #8b7355;
+            background: linear-gradient(135deg, #f5f0eb 0%, #ede4d8 100%);
+            min-height: 100vh;
+        }
+
+        .header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            background: linear-gradient(135deg, #f5f0eb, #e8ddd0);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #a0907a;
+            margin-bottom: 8px;
+            font-weight: 300;
+            letter-spacing: 2px;
+        }
+
+        .header p {
+            font-size: 1.8rem;
+            color: #b5a48d;
+            font-style: italic;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #9d8c78;
+            font-style: italic;
+            font-weight: 300;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: 0 auto;
+            padding: 20px 15px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(160, 144, 122, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(160, 144, 122, 0.25);
+        }
+
+        .product-image {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background: linear-gradient(135deg, #f0e6d6, #e8ddd0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #b5a48d;
+            border: 3px solid #e8ddd0;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        .product-name {
+            font-size: 1.1rem;
+            color: #8b7355;
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .product-description {
+            font-size: 0.85rem;
+            color: #a0907a;
+            font-style: italic;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            min-height: 45px;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            color: #8b7355;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 1.6rem;
+            color: #8b7355;
+            margin: 40px 0 25px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        .whatsapp-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #a8d8a8;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 16px 22px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            box-shadow: 0 5px 20px rgba(168, 216, 168, 0.35);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.3px;
+        }
+
+        .whatsapp-btn:hover {
+            background: #95c695;
+            transform: scale(1.03);
+            box-shadow: 0 7px 25px rgba(168, 216, 168, 0.4);
+        }
+
+        .whatsapp-btn:active {
+            transform: scale(0.95);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #a0907a;
+            font-style: italic;
+            background: linear-gradient(135deg, #f5f0eb, #ede4d8);
+            margin-top: 50px;
+        }
+
+        .footer p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .phone-number {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #8b7355;
+            margin-top: 15px;
+        }
+
+        /* Placeholder para cuando no hay imagen */
+        .placeholder {
+            background: linear-gradient(135deg, #f0e6d6, #e8ddd0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #b5a48d;
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .header p {
+                font-size: 1.4rem;
+            }
+            
+            .container {
+                padding: 15px 10px;
+            }
+            
+            .products-grid {
+                gap: 20px;
+            }
+            
+            .product-image {
+                width: 100px;
+                height: 100px;
+            }
+            
+            .product-card {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Cocoa - Haruka</h1>
+        <p>Haz que tu día especial</p>
+        <p class="subtitle">sea más dulce</p>
+    </div>
+
+    <div class="container">
+        <!-- Sección Tortas Tradicionales -->
+        <h2 class="section-title">Tortas</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <!-- Aquí podrás agregar: <img src="tu-foto.jpg" alt="Torta Selva Negra"> -->
+                    <img src="tortaCumple.jpg" alt="Torta tradicional">
+                </div>
+                <div class="product-name">Torta tradicional</div>
+                <div class="product-description">Bizcocho de chocolate con cerezas y crema chantilly</div>
+                <div class="product-price">400.000gs</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="tortaChoco.jpg" alt="Torta de chocolate">
+                </div>
+                <div class="product-name">Torta de chocolate</div>
+                <div class="product-description">Esponjoso bizcocho bañado en tres leches y canela</div>
+                <div class="product-price">$500.000gs</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image placeholder">
+                    <img src="cheesecake.jpg" alt="Cheesecake tracicional">
+                </div>
+                <div class="product-name">Cheesecake</div>
+                <div class="product-description">Agregar descripcion</div>
+                <div class="product-price">$90.000gs</div>
+            </div>
+
+        </div>
+
+        <!-- Sección Bombas de Crema -->
+        <h2 class="section-title">Bombas de Crema</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image placeholder">
+                    🍫
+                    <!-- Aquí podrás agregar: <img src="tu-foto.jpg" alt="Bomba Chocolate"> -->
+                </div>
+                <div class="product-name">Chocolate</div>
+                <div class="product-description">Con ganache de chocolate belga intenso</div>
+                <div class="product-price">$2.800</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-image placeholder">
+                    🍓
+                    <!-- Aquí podrás agregar: <img src="tu-foto.jpg" alt="Bomba Frutilla"> -->
+                </div>
+                <div class="product-name">Frutilla</div>
+                <div class="product-description">Crema de frutillas frescas y trozos de fruta</div>
+                <div class="product-price">$2.600</div>
+            </div>
+
+        </div>
+
+        <!-- Aquí podrás agregar más secciones como:
+        <h2 class="section-title">Tartas</h2>
+        <div class="products-grid">
+            ... más productos
+        </div>
+        -->
+
+    </div>
+
+    <div class="footer">
+        <p>📍 Horarios: Indefinido</p>
+        <p>Hacé tu pedido con anticipación</p>
+        <div class="phone-number">(+595) 981723686</div>
+    </div>
+
+    <button class="whatsapp-btn" onclick="hacerPedido()">
+        <span>📱</span>
+        Pedir por WhatsApp
+    </button>
+
+    <script>
+        function hacerPedido() {
+            // Reemplaza este número con el número de WhatsApp de la pastelería
+            const numeroWhatsApp = "595981723686"; // Formato: código país + número sin espacios
+            const mensaje = "¡Hola! Me interesa hacer un pedido de la pastelería. ¿Podrían ayudarme?";
+            const mensajeCodificado = encodeURIComponent(mensaje);
+            const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${mensajeCodificado}`;
+            
+            window.open(urlWhatsApp, '_blank');
+        }
+
+        // Animaciones suaves
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.product-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            cards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'all 0.6s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
